@@ -1,0 +1,54 @@
+baseURL: "https://example.org/"
+languageCode: "en-gb"
+title: "Zhaoyang Liu"
+theme: "academic-clean"
+copyright: "© Zhaoyang Liu"
+enableRobotsTXT: true
+
+pagination:
+  pagerSize: 10
+
+caches:
+  images:
+    dir: ":cacheDir/images"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+
+menus:
+  main:
+    - name: "Home"
+      pageRef: "/"
+      weight: 10
+    - name: "Research"
+      pageRef: "/research"
+      weight: 20
+    - name: "Activities"
+      pageRef: "/activities"
+      weight: 30
+    - name: "Teaching"
+      pageRef: "/teaching"
+      weight: 40
+    - name: "Life"
+      pageRef: "/life"
+      weight: 50
+    - name: "CV"
+      pageRef: "/cv"
+      weight: 60
+    - name: "Contact"
+      pageRef: "/contact"
+      weight: 70
+
+params:
+  description: "Academic website of Zhaoyang Liu, a PhD student at the London School of Geometry and Number Theory."
+  author: "Zhaoyang Liu"
+  shortName: "ZL"
+  showProfileImage: true
+  profileImage: "images/profile.jpg"
+  profileImageAlt: "Portrait of Zhaoyang Liu"
+  emailDisplay: "zl25[at]ic.ac.uk"
+  mathjax:
+    # 预留配置：未来需要公式时改为 true 即可。
+    enabled: false

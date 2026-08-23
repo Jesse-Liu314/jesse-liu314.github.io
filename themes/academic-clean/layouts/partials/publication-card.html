@@ -1,0 +1,11 @@
+<article class="publication-card">
+  <p class="publication-date">{{ .Params.publication_date }}</p>
+  <h3>{{ .Title }}</h3>
+  <p class="publication-authors">{{ delimit .Params.authors ", " }}</p>
+  <div class="publication-meta">
+    <cite>{{ .Params.publication }}</cite>
+    {{ $url := .Params.link | default .Params.doi }}
+    {{ $label := .Params.link_label | default "DOI" }}
+    <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ $label }} record for {{ .Title }}">{{ $label }} <span aria-hidden="true">↗</span></a>
+  </div>
+</article>

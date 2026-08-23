@@ -1,0 +1,61 @@
+{{ define "main" }}
+  <section class="home-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ .Params.eyebrow }}</p>
+        <h1>Zhaoyang <span>Liu</span></h1>
+        <p class="hero-role">{{ .Params.role }}</p>
+        <div class="hero-intro prose">{{ .Content }}</div>
+        <div class="hero-actions">
+          <a class="button" href="{{ "/research/" | relURL }}">View research</a>
+          <a class="text-link" href="{{ "/contact/" | relURL }}">Get in touch <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="portrait-wrap">
+          {{ if site.Params.showProfileImage }}
+            <img class="portrait" src="{{ site.Params.profileImage | relURL }}" alt="{{ site.Params.profileImageAlt }}">
+          {{ else }}
+            <div class="portrait-placeholder" aria-label="Portrait placeholder"><span>ZL</span></div>
+          {{ end }}
+        </div>
+        <div class="profile-details">
+          <p class="profile-kicker">Currently at</p>
+          <p class="profile-main">{{ .Params.institution }}</p>
+          <p class="profile-kicker">Supervised by</p>
+          <p class="profile-main">{{ delimit .Params.supervisors " & " }}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="interest-section">
+    <div class="shell section-grid">
+      <div>
+        <p class="section-label">Research interests</p>
+        <h2>Questions across geometry and combinatorics</h2>
+      </div>
+      <div class="tag-list" aria-label="Research interests">
+        {{ range .Params.research_interests }}<span>{{ . }}</span>{{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="recent-section shell">
+    <div class="section-heading">
+      <div>
+        <p class="section-label">Selected work</p>
+        <h2>Recent publications</h2>
+      </div>
+      <a class="text-link" href="{{ "/research/" | relURL }}">All publications <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="publication-grid">
+      {{ with site.GetPage "/research" }}
+        {{ range first 2 (.Pages.ByDate.Reverse) }}
+          {{ partial "publication-card.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+

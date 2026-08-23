@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="shell shell--narrow">
+      <p class="section-label">Beyond mathematics</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.intro }}<p class="page-intro">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <article class="page-body shell shell--narrow prose life-content">
+    {{ .Content }}
+    {{ with .Params.gallery }}
+      <div class="life-gallery" aria-label="Life outside mathematics">
+        {{ range . }}
+          <img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy">
+        {{ end }}
+      </div>
+    {{ end }}
+  </article>
+{{ end }}
+

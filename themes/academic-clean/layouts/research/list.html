@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <section class="page-hero research-hero">
+    <div class="shell shell--narrow">
+      <p class="section-label">Publications</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.intro }}<p class="page-intro">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <section class="research-list shell shell--narrow">
+    <h2 class="list-heading">Publications and preprints</h2>
+    <ol class="publication-list">
+      {{ range .Pages.ByDate.Reverse }}
+        <li>{{ partial "publication-card.html" . }}</li>
+      {{ end }}
+    </ol>
+    <div class="research-projects prose">{{ .Content }}</div>
+  </section>
+{{ end }}

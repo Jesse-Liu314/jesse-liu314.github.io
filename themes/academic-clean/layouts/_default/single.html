@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="shell shell--narrow">
+      <p class="section-label">{{ .Section | default "Page" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.intro }}<p class="page-intro">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <article class="page-body shell shell--narrow prose">
+    {{ .Content }}
+  </article>
+{{ end }}
+
